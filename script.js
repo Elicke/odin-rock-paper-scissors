@@ -1,20 +1,35 @@
-let computerScore = 0,
-    humanScore = 0;
+playGame();
 
-function playRound(computerChoice, humanChoice) {
-    if ((computerChoice === "Rock" && humanChoice === "Scissors")
-        || (computerChoice === "Paper" && humanChoice === "Rock")
-        || (computerChoice === "Scissors" && humanChoice === "Paper")) {
-            ++computerScore;
-            console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
-    } else if ((humanChoice === "Rock" && computerChoice === "Scissors")
-        || (humanChoice === "Paper" && computerChoice === "Rock")
-        || (humanChoice === "Scissors" && computerChoice === "Paper")) {
-            ++humanScore;
-            console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
-    } else {
-        console.log(`${computerChoice} and ${humanChoice} -- it's a tie!`);
+function playGame() {
+    let computerScore = 0,
+        humanScore = 0,
+        roundCount = 1;
+
+    function playRound(computerChoice, humanChoice) {
+        if ((computerChoice === "Rock" && humanChoice === "Scissors")
+            || (computerChoice === "Paper" && humanChoice === "Rock")
+            || (computerChoice === "Scissors" && humanChoice === "Paper")) {
+                ++computerScore;
+                ++roundCount;
+                console.log(`You lose this round! ${computerChoice} beats ${humanChoice}!`);
+        } else if ((humanChoice === "Rock" && computerChoice === "Scissors")
+            || (humanChoice === "Paper" && computerChoice === "Rock")
+            || (humanChoice === "Scissors" && computerChoice === "Paper")) {
+                ++humanScore;
+                ++roundCount;
+                console.log(`You win this round! ${humanChoice} beats ${computerChoice}!`);
+        } else {
+            console.log(`${computerChoice} and ${humanChoice} -- it's a tie!`);
+        }
     }
+
+    while (roundCount <= 5) {
+        playRound(getComputerChoice(), getHumanChoice());
+    }
+
+    console.log((computerScore > humanScore)
+        ? `The computer wins with a score of ${computerScore}-${humanScore}!`
+        : `You won with a score of ${humanScore}-${computerScore}!`);
 }
 
 function getComputerChoice() {
