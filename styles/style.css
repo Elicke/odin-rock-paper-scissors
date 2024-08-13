@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+    color: #e0dfe0;
+    font-family: Roboto, "DejaVu Sans", sans-serif;
+}
+
+body {
+    background-color: #04021d;
+}
