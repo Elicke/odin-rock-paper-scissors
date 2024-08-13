@@ -7,6 +7,30 @@
     <title>Rock, Paper, Scissors!</title>
 </head>
 <body>
-    
+    <h1 id="header">Rock, Paper, Scissors!</h1>
+    <div id="ui">
+        <div id="ui__human">
+            <img alt="Human Player" class="ui__player-icon">
+            <img alt="Select Rock" class="ui__option ui__option--human ui__rock">
+            <img alt="Select Paper" class="ui__option ui__option--human ui__paper">
+            <img alt="Select Scissors" class="ui__option ui__option--human ui__scissors">
+        </div>
+        <div id="ui__versus">
+            <img alt="Human Choice" class="ui__choice ui__choice--human">
+            <img alt="vs." id="ui__vs-icon">
+            <img alt="Computer Choice" class="ui__choice ui__choice--computer">
+        </div>
+        <div id="ui__computer">
+            <img alt="Computer Player" class="ui__player-icon">
+            <img alt="Rock (Computer)" class="ui__option ui__option--computer ui__rock">
+            <img alt="Paper (Computer)" class="ui__option ui__option--computer ui__paper">
+            <img alt="Scissors (Computer)" class="ui__option ui__option--computer ui__scissors">
+        </div>
+    </div>
+    <div id="score">
+        <p class="score__digit score__digit--human">0</p>
+        <p id="score__dash">-</p>
+        <p class="score__digit score__digit--computer">0</p>
+    </div>
 </body>
 </html>

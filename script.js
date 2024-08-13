@@ -1,4 +1,4 @@
-playGame();
+// playGame();
 
 function playGame() {
     let computerScore = 0,
