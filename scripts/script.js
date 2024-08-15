@@ -1,3 +1,22 @@
+const humanUI = document.querySelector("#ui__human");
+
+humanUI.addEventListener("click", (e) => {
+    let target = e.target;
+    let parent = target.parentElement;
+    let classes = parent.classList;
+    let choice = "";
+
+    if (classes.contains("ui__rock")) {
+        choice = "Rock";
+    } else if (classes.contains("ui__paper")) {
+        choice = "Paper";
+    } else if (classes.contains("ui__scissors")) {
+        choice = "Scissors";
+    }
+
+    console.log(choice);
+});
+
 // playGame();
 
 function playGame() {
