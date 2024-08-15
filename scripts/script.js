@@ -5,7 +5,7 @@ const humanScore = document.querySelector(".score__digit--human");
 const computerScore = document.querySelector(".score__digit--computer");
 const detailText = document.querySelector("#detail > p");
 
-humanUI.addEventListener("click", (e) => {
+const getHumanChoice = (e) => {
     let target = e.target;
     let parent = target.parentElement;
     let classes = parent.classList;
@@ -22,38 +22,27 @@ humanUI.addEventListener("click", (e) => {
     if (choice !== null) {
         playRound(getComputerChoice(), choice);
     }
-});
+};
+
+humanUI.addEventListener("click", getHumanChoice);
 
 function playRound(computerChoice, humanChoice) {
+    let gameEnd = false;
     updateVersus(computerChoice, humanChoice);
     if ((computerChoice === "Rock" && humanChoice === "Scissors")
         || (computerChoice === "Paper" && humanChoice === "Rock")
         || (computerChoice === "Scissors" && humanChoice === "Paper")) {
-            updateScore(true);
-            updateDetail(`You lose this round! ${computerChoice} beats ${humanChoice}!`);
+            gameEnd = updateScore("Computer");
+            if (!gameEnd) updateDetail(`You lose this round! ${computerChoice} beats ${humanChoice}!`);
     } else if ((humanChoice === "Rock" && computerChoice === "Scissors")
         || (humanChoice === "Paper" && computerChoice === "Rock")
         || (humanChoice === "Scissors" && computerChoice === "Paper")) {
-            updateScore(false);
-            updateDetail(`You win this round! ${humanChoice} beats ${computerChoice}!`);
+            gameEnd = updateScore("Human");
+            if (!gameEnd) updateDetail(`You win this round! ${humanChoice} beats ${computerChoice}!`);
     } else {
         updateDetail(`${computerChoice} and ${humanChoice} -- it's a tie!`);
     }
 }
-
-// function playGame() {
-//     let computerScore = 0,
-//         humanScore = 0,
-//         roundCount = 1;
-
-//     while (roundCount <= 5) {
-//         playRound(getComputerChoice(), getHumanChoice());
-//     }
-
-//     console.log((computerScore > humanScore)
-//         ? `The computer wins with a score of ${computerScore}-${humanScore}!`
-//         : `You won with a score of ${humanScore}-${computerScore}!`);
-// }
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
@@ -91,17 +80,35 @@ function updateVersus(computerChoice, humanChoice) {
     }
 }
 
-function updateScore(computerWinsRound) {
+function updateScore(roundWinner) {
     let currScore;
-    if (computerWinsRound) {
+    if (roundWinner === "Computer") {
         currScore = parseInt(computerScore.textContent);
         ++currScore;
         computerScore.textContent = currScore;
+        if (currScore === 5) {
+            finishGame("Computer");
+            return true;
+        }
     } else {
         currScore = parseInt(humanScore.textContent);
         ++currScore;
         humanScore.textContent = currScore;
+        if (currScore === 5) {
+            finishGame("Human");
+            return true;
+        }
     }
+    return false;
+}
+
+function finishGame(winner) {
+    if (winner === "Computer") {
+        updateDetail(`The computer wins!`);
+    } else {
+        updateDetail(`You win!`);
+    }
+    humanUI.removeEventListener("click", getHumanChoice);
 }
 
 function updateDetail(info) {
