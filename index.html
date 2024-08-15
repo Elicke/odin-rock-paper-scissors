@@ -11,27 +11,52 @@
     <h1 id="header">Rock, Paper, Scissors!</h1>
     <div id="ui">
         <div id="ui__human">
-            <img alt="Human Player" class="ui__player-icon" src="./images/human.svg">
-            <img alt="Select Rock" class="ui__option ui__option--human ui__rock" src="./images/rock-human.svg">
-            <img alt="Select Paper" class="ui__option ui__option--human ui__paper" src="./images/paper-human.svg">
-            <img alt="Select Scissors" class="ui__option ui__option--human ui__scissors" src="./images/scissors-human.svg">
+            <div class="ui__player-icon">
+                <img alt="Human Player" src="./images/human.svg">
+            </div>
+            <div class="ui__option ui__option--human ui__rock">
+                <img alt="Select Rock" src="./images/rock-human.svg">
+            </div>
+            <div class="ui__option ui__option--human ui__paper">
+                <img alt="Select Paper" src="./images/paper-human.svg">
+            </div>
+            <div class="ui__option ui__option--human ui__scissors">
+                <img alt="Select Scissors" src="./images/scissors-human.svg">
+            </div>
         </div>
         <div id="ui__versus">
-            <img alt="Human Choice" class="ui__choice ui__choice--human" src="./images/unknown-human.svg">
-            <img alt="vs." id="ui__vs-icon" src="./images/versus.svg">
-            <img alt="Computer Choice" class="ui__choice ui__choice--computer" src="./images/unknown-computer.svg">
+            <div class="ui__choice ui__choice--human">
+                <img alt="Human Choice" src="./images/unknown-human.svg">
+            </div>
+            <div id="ui__vs-icon">
+                <img alt="vs." src="./images/versus.svg">
+            </div>
+            <div class="ui__choice ui__choice--computer">
+                <img alt="Computer Choice" src="./images/unknown-computer.svg">
+            </div>
         </div>
         <div id="ui__computer">
-            <img alt="Computer Player" class="ui__player-icon" src="./images/computer.svg">
-            <img alt="Rock (Computer)" class="ui__option ui__option--computer ui__rock" src="./images/rock-computer.svg">
-            <img alt="Paper (Computer)" class="ui__option ui__option--computer ui__paper" src="./images/paper-computer.svg">
-            <img alt="Scissors (Computer)" class="ui__option ui__option--computer ui__scissors" src="./images/scissors-computer.svg">
+            <div class="ui__player-icon">
+                <img alt="Computer Player" src="./images/computer.svg">
+            </div>
+            <div class="ui__option ui__option--computer ui__rock">
+                <img alt="Rock (Computer)" src="./images/rock-computer.svg">
+            </div>
+            <div class="ui__option ui__option--computer ui__paper">
+                <img alt="Paper (Computer)" src="./images/paper-computer.svg">
+            </div>
+            <div class="ui__option ui__option--computer ui__scissors">
+                <img alt="Scissors (Computer)" src="./images/scissors-computer.svg">
+            </div>
         </div>
     </div>
     <div id="score">
         <p class="score__digit score__digit--human">0</p>
-        <p id="score__dash">-</p>
+        <p id="score__dash">&mdash;</p>
         <p class="score__digit score__digit--computer">0</p>
+    </div>
+    <div id="detail">
+        <p>Make your selection on the left-hand side!</p>
     </div>
 </body>
 </html>

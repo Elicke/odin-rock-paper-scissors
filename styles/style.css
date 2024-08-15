@@ -5,5 +5,96 @@
 }
 
 body {
+    height: 97vh;
     background-color: #04021d;
+    margin: 0px;
+}
+
+#header {
+    text-align: center;
+    font-size: 48px;
+    margin: 32px 0px 96px;
+}
+
+#ui {
+    width: 95%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: 32px auto;
+}
+
+#ui__human, #ui__computer {
+    flex: 0 1 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#ui__versus {
+    flex: 0 1 40%;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ui__player-icon {
+    flex: 0 1 10%;
+    max-height: 10%;
+    width: auto;
+}
+
+.ui__option {
+    flex: 0 1 25%;
+    max-height: 25%;
+    width: auto;
+}
+
+.ui__player-icon > img, .ui__option > img {
+    display: block;
+    max-height: 100%;
+    width: auto;
+    margin: 0% auto;
+}
+
+.ui__option--human > img:hover {
+    filter: hue-rotate(45deg);
+}
+
+.ui__option--human > img:active {
+    filter: hue-rotate(90deg);
+}
+
+.ui__choice {
+    flex: 0 1 25%;
+}
+
+#ui__vs-icon {
+    flex: 0 1 35%;
+}
+
+#score {
+    width: 10%;
+    display: flex;
+    border: 2px solid #625ad3;
+    border-radius: 5px;
+    margin: 32px auto;
+}
+
+#score > p {
+    flex: auto;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#detail {
+    margin: 96px auto;
+}
+
+#detail > p {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
 }
