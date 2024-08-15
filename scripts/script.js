@@ -1,6 +1,9 @@
 const humanUI = document.querySelector("#ui__human");
 const humanChoiceImg = document.querySelector(".ui__choice--human > img");
 const computerChoiceImg = document.querySelector(".ui__choice--computer > img");
+const humanScore = document.querySelector(".score__digit--human");
+const computerScore = document.querySelector(".score__digit--computer");
+const detailText = document.querySelector("#detail > p");
 
 humanUI.addEventListener("click", (e) => {
     let target = e.target;
@@ -23,19 +26,19 @@ humanUI.addEventListener("click", (e) => {
 
 function playRound(computerChoice, humanChoice) {
     updateVersus(computerChoice, humanChoice);
-    // if ((computerChoice === "Rock" && humanChoice === "Scissors")
-    //     || (computerChoice === "Paper" && humanChoice === "Rock")
-    //     || (computerChoice === "Scissors" && humanChoice === "Paper")) {
-    //         ++computerScore;
-    //         console.log(`You lose this round! ${computerChoice} beats ${humanChoice}!`);
-    // } else if ((humanChoice === "Rock" && computerChoice === "Scissors")
-    //     || (humanChoice === "Paper" && computerChoice === "Rock")
-    //     || (humanChoice === "Scissors" && computerChoice === "Paper")) {
-    //         ++humanScore;
-    //         console.log(`You win this round! ${humanChoice} beats ${computerChoice}!`);
-    // } else {
-    //     console.log(`${computerChoice} and ${humanChoice} -- it's a tie!`);
-    // }
+    if ((computerChoice === "Rock" && humanChoice === "Scissors")
+        || (computerChoice === "Paper" && humanChoice === "Rock")
+        || (computerChoice === "Scissors" && humanChoice === "Paper")) {
+            updateScore(true);
+            updateDetail(`You lose this round! ${computerChoice} beats ${humanChoice}!`);
+    } else if ((humanChoice === "Rock" && computerChoice === "Scissors")
+        || (humanChoice === "Paper" && computerChoice === "Rock")
+        || (humanChoice === "Scissors" && computerChoice === "Paper")) {
+            updateScore(false);
+            updateDetail(`You win this round! ${humanChoice} beats ${computerChoice}!`);
+    } else {
+        updateDetail(`${computerChoice} and ${humanChoice} -- it's a tie!`);
+    }
 }
 
 // function playGame() {
@@ -86,4 +89,21 @@ function updateVersus(computerChoice, humanChoice) {
         default:
             computerChoiceImg.setAttribute("src", "./images/scissors-computer.svg");
     }
+}
+
+function updateScore(computerWinsRound) {
+    let currScore;
+    if (computerWinsRound) {
+        currScore = parseInt(computerScore.textContent);
+        ++currScore;
+        computerScore.textContent = currScore;
+    } else {
+        currScore = parseInt(humanScore.textContent);
+        ++currScore;
+        humanScore.textContent = currScore;
+    }
+}
+
+function updateDetail(info) {
+    detailText.textContent = info;
 }
